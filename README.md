@@ -27,6 +27,4 @@ The Chicago and New York City files also have the following two columns:
 - Birth Year
 
 
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
 
