@@ -184,7 +184,12 @@ def user_stats(df):
     print('-'*40)
 
 def raw_data(df):
-    """Displays raw data from dataframe"""
+    """
+    Asks user if it want to display raw data
+
+    Returns:
+        (dataframe) df - 5 rows of the specified city, day, and month.
+    """
     counter = 0
     while True:
         display_data = input('Would you like to display 5 rows of data? Enter yes or no: ')
