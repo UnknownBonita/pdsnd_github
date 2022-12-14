@@ -13,6 +13,26 @@ DAYS = {'sunday':1,'monday':2,
         'tuesday':3, 'wednesday':4, 
         'thursday:':5, 'friday':6, 
         'saturday':7}
+        
+def check_valid(prompt,valid_entries):
+    """
+    Asks user for input and verify if entry is valid.
+
+    Args:
+        (str) prompt - message to display to user
+        (list) valid_entries - list of strings that should be accepted
+
+    Returns:
+        (str) user_input - the valid input
+    """
+    try:
+        user_input = input(prompt).lower()
+        while user_input not in valid_entries:
+            print('Error! Invalid choice. Please Try Again..\n')
+            user_input = input(prompt).lower()
+        return user_input
+    except:
+        print('Error! Invalid choice.\n')
 
 def get_filters():
     """
@@ -26,31 +46,16 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
 
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    while True:
-        city = input('Enter the name of the city you want to explore:\n \t-Chicago\t-New York City\t-Washington\n  Your choice: ')
-        city = city.lower()
-        if city in CITY_DATA.keys():
-            break;
-        else:
-            print('Error! Invalid choice. Please Try Again..\n')
+    prompt_cities ='Enter the name of the city you want to explore:\n \t-Chicago\t-New York City\t-Washington\n  Your choice: '
+    city = check_valid(prompt_cities,CITY_DATA.keys())
 
     # get user input for month (all, january, february, ... , june)
-    while True:
-        month = input('Enter the month you want to explore(January-June): ')
-        month = month.lower()
-        if month in MONTHS.keys() or month == 'all':
-            break;
-        else:
-            print('Error! Invalid choice. Please Try Again..\n')
-
+    prompt_months = 'Enter the month you want to explore(January-June): '
+    month = check_valid(prompt_months,MONTHS.keys())
+           
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    while True:
-        day = input('Enter the name of the day you want to explore: ')
-        day = day.lower()
-        if day in DAYS.keys() or day == 'all':
-            break;
-        else:
-            print('Error! Invalid choice. Please Try Again..\n')
+    prompt_days = 'Enter the name of the day you want to explore: '
+    day = check_valid(prompt_days,DAYS.keys())
     
     print('\nSelected attributes:\n\t City: {} \n\t Month: {} \n\t Day: {}'.format(city.title(),month.title(),day.title()))
     print('-'*40)
