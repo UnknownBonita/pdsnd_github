@@ -1,5 +1,7 @@
 import time
 import pandas as pd
+from tabulate import tabulate
+import numpy as np
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -195,11 +197,9 @@ def raw_data(df):
         display_data = input('Would you like to display 5 rows of data? Enter yes or no: ')
         if display_data.lower() != 'yes':
             break
-        else:
-            pd.set_option('display.max_columns',200)
-            print(df.iloc[counter:counter+5])
-            counter += 5
-            
+        print(tabulate(df.iloc[np.arange(0+counter,5+counter)], headers ="keys"))
+        counter += 5
+                  
 def main():
     while True:
         city, month, day = get_filters()
